@@ -1,4 +1,9 @@
-<div class="container">
+
+
+<div class="container" style="padding-top: 30px;">
+  <% flash.each do |key,value| %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h2 class= "text-center">
@@ -21,7 +26,7 @@
       <div class="form-group">
         <%= f.label :'Type de réduction' %>
 
-        <%= f.select(:type, ['Réduction en valeur (ex: -5€ )','Réduction en pourcentage (ex: -10%)','Bien pour un achat donné'], {}, { class: 'form-control cutsom-type-reduction' }) %>
+        <%= f.select(:typeOfDiscount, ['Réduction en valeur','Réduction en pourcentage','Bien pour un achat donné'], {}, { class: 'form-control cutsom-type-reduction' }) %>
 
       <!-- This div is hidden by default. It allows the user to precise the discount value -->
       </div>
@@ -29,14 +34,14 @@
       <div class="form-group col-md-6">
         <%= f.label :'Valeur initiale' %>
 
-        <%= f.number_field :value, class: 'form-control' %>
+        <%= f.number_field :valueOfDiscount, class: 'form-control' %>
 
       </div>
 
     <div class="form-group col-md-6">
       <%= f.label :'Valeur de la réduction' %>
 
-      <%= f.number_field :discount_precentage, class: 'form-control' %>
+      <%= f.number_field :percentageOfDiscount, class: 'form-control' %>
 
     </div>
 
@@ -45,14 +50,14 @@
   <div class="form-group col-md-6">
     <%= f.label :'Valeur initiale' %>
 
-    <%= f.number_field :value, class: 'form-control' %>
+    <%= f.number_field :valueOfDiscount, class: 'form-control' %>
 
   </div>
 
   <div class="form-group col-md-6">
     <%= f.label :'Pourcentage de la réduction' %>
 
-    <%= f.number_field :value, class: 'form-control' %>
+    <%= f.number_field :percentageOfDiscount, class: 'form-control' %>
 
   </div>
   </div>
@@ -62,7 +67,7 @@
 
     <div class="form-group">
       <%= f.label :'Titre de l\'annonce (Soyez créatifs!)' %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :titleOfDiscount, class: 'form-control' %>
     </div>
 
     <div class="form-group">
@@ -81,3 +86,51 @@
 
   <% end %>
 </div>
+
+<script>
+$(document).ready(function () {
+  var h = $('.cutsom-type-reduction');
+  console.log(h);
+  $('.cutsom-type-reduction').change(function() {
+    var mySel = $('.cutsom-type-reduction').val();
+    if (mySel === 'Réduction en valeur')
+    {
+      console.log(mySel);
+      if ($('#custom-field-form-for-discount-id-1').hasClass('custom-field-form-for-discount'))
+      {
+        $('#custom-field-form-for-discount-id-1').removeClass('custom-field-form-for-discount');
+      }
+
+      if ($('#custom-field-form-for-discount-id-2').hasClass('custom-field-form-for-discount') == false)
+      {
+        $('#custom-field-form-for-discount-id-2').addClass('custom-field-form-for-discount');
+      }
+
+      //$('.custom-field-form-for-discount').fadeIn('slow');
+    }
+    else if (mySel === 'Réduction en pourcentage') {
+      console.log(mySel);
+
+      if ($('#custom-field-form-for-discount-id-2').hasClass('custom-field-form-for-discount') == true )
+      {
+        console.log('1');
+        $('#custom-field-form-for-discount-id-2').removeClass('custom-field-form-for-discount');
+      }
+
+      if ($('#custom-field-form-for-discount-id-1').hasClass('custom-field-form-for-discount') == false)
+      {
+        console.log('2');
+        $('#custom-field-form-for-discount-id-1').addClass('custom-field-form-for-discount');
+      }
+    }
+    else if (mySel === 'Bien pour un achat donné') {
+
+    }
+    else
+    {
+      // Do nothing
+      console.log(mySel);
+    }
+  })
+})
+</script>

@@ -14,10 +14,10 @@ ActiveRecord::Schema.define(version: 2018_10_30_083341) do
 
   create_table "discounts", force: :cascade do |t|
     t.string "company"
-    t.string "type"
-    t.integer "value"
-    t.integer "discount_precentage"
-    t.string "title"
+    t.string "typeOfDiscount"
+    t.integer "valueOfDiscount"
+    t.integer "percentageOfDiscount"
+    t.string "titleOfDiscount"
     t.string "duration"
     t.integer "numberOfDiscounts"
     t.text "description"
