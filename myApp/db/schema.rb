@@ -16,9 +16,11 @@ ActiveRecord::Schema.define(version: 2018_10_30_083341) do
     t.string "company"
     t.string "type"
     t.integer "value"
+    t.integer "discount_precentage"
+    t.string "title"
     t.string "duration"
     t.integer "numberOfDiscounts"
-    t.text "desciption"
+    t.text "description"
     t.text "conditions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

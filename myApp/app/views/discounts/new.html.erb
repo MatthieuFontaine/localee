@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class= "text-center">
+        Ajouter une réduction
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h6 class= "text-center"> Complétez ce formulaire afin d'ajouter une réduction.  <br/> Celle-ci sera disponible immédiatement en ligne </h6>
+    </div>
+  </div>
+    <%= form_for @discount do |f| %>
+
+      <div class="form-group">
+        <%= f.label :'Mon entreprise' %>
+        <%= f.text_field :company, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :'Type de réduction' %>
+
+        <%= f.select(:type, ['Réduction en valeur (ex: -5€ )','Réduction en pourcentage (ex: -10%)','Bien pour un achat donné'], {}, { class: 'form-control cutsom-type-reduction' }) %>
+
+      <!-- This div is hidden by default. It allows the user to precise the discount value -->
+      </div>
+      <div class="form-row  custom-field-form-for-discount" id= "custom-field-form-for-discount-id-1">
+      <div class="form-group col-md-6">
+        <%= f.label :'Valeur initiale' %>
+
+        <%= f.number_field :value, class: 'form-control' %>
+
+      </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :'Valeur de la réduction' %>
+
+      <%= f.number_field :discount_precentage, class: 'form-control' %>
+
+    </div>
+
+  </div>
+  <div class="form-row  custom-field-form-for-discount" id= "custom-field-form-for-discount-id-2">
+  <div class="form-group col-md-6">
+    <%= f.label :'Valeur initiale' %>
+
+    <%= f.number_field :value, class: 'form-control' %>
+
+  </div>
+
+  <div class="form-group col-md-6">
+    <%= f.label :'Pourcentage de la réduction' %>
+
+    <%= f.number_field :value, class: 'form-control' %>
+
+  </div>
+  </div>
+
+  <div class="form-row solid-line-delimiter">
+  </div>
+
+    <div class="form-group">
+      <%= f.label :'Titre de l\'annonce (Soyez créatifs!)' %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :'Description de la réduction' %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :'Conditions de la réduction' %>
+      <%= f.text_area :conditions, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+    <%= f.submit :submit, class: 'btn btn-outline-success btn-block btn-lg' %>
+  </div>
+
+  <% end %>
+</div>

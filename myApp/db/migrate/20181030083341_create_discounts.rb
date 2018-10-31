@@ -4,9 +4,11 @@ class CreateDiscounts < ActiveRecord::Migration[5.2]
       t.string :company
       t.string :type
       t.integer :value
-      t.string :duration
-      t.integer :numberOfDiscounts
-      t.text :desciption
+      t.integer :discount_precentage
+      t.string :title
+      t.string :duration, null: 'default_duration'
+      t.integer :numberOfDiscounts, null: 100
+      t.text :description
       t.text :conditions
 
       t.timestamps

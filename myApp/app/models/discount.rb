@@ -1,3 +1,3 @@
-class Discount < ActiveRecord::database
-  
+class Discount < ActiveRecord::Base
+
 end

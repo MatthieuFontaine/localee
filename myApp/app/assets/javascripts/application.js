@@ -17,3 +17,48 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+$(document).ready(function () {
+  var h = $('.cutsom-type-reduction');
+  console.log(h);
+  $('.cutsom-type-reduction').change(function() {
+    var mySel = $('.cutsom-type-reduction').val();
+    if (mySel === 'Réduction en valeur (ex: -5€ )')
+    {
+      console.log(mySel);
+      if ($('#custom-field-form-for-discount-id-1').hasClass('custom-field-form-for-discount'))
+      {
+        $('#custom-field-form-for-discount-id-1').removeClass('custom-field-form-for-discount');
+      }
+
+      if ($('#custom-field-form-for-discount-id-2').hasClass('custom-field-form-for-discount') == false)
+      {
+        $('#custom-field-form-for-discount-id-2').addClass('custom-field-form-for-discount');
+      }
+
+      //$('.custom-field-form-for-discount').fadeIn('slow');
+    }
+    else if (mySel === 'Réduction en pourcentage (ex: -10%)') {
+      console.log(mySel);
+
+      if ($('#custom-field-form-for-discount-id-2').hasClass('custom-field-form-for-discount') == true )
+      {
+        console.log('1');
+        $('#custom-field-form-for-discount-id-2').removeClass('custom-field-form-for-discount');
+      }
+
+      if ($('#custom-field-form-for-discount-id-1').hasClass('custom-field-form-for-discount') == false)
+      {
+        console.log('2');
+        $('#custom-field-form-for-discount-id-1').addClass('custom-field-form-for-discount');
+      }
+    }
+    else if (mySel === 'Bien pour un achat donné') {
+
+    }
+    else
+    {
+      // Do nothing
+      console.log(mySel);
+    }
+  })
+})
