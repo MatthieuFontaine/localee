@@ -1,26 +1,51 @@
-<h2>Log in</h2>
+<style>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+#custom-second-navbar {
+  display: none;
+}
+#custom-first-navbar {
+  display: none;
+}
+.cutsom-form-padding{
+  padding-top: 50px;
+  padding-bottom: 120px;
+}
+body {
+  background-color: #f5f5f5;
+}
+</style>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<div class="text-center container col-md-4 offset-md-4 cutsom-form-padding">
+  <%= link_to image_tag('logo3.png', height: '150', class:"mb-4"), root_path %>
+  <h2 class="h3 mb-3 font-weight-normal">Connectez-vous et ajoutez des réductions ! </h2>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field form-group">
+      <%= f.label :"Adresse email" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="field form-group">
+      <%= f.label :"Mot de passe" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <% if devise_mapping.rememberable? -%>
+      <div class="field form-group">
+        <div class: "form-check">
+        <%= f.check_box :remember_me, class: "form-check-input"%>
+        <%= f.label :"Se rappeler de moi ", class: "form-check-label" %>
+        </div>
+      </div>
+    <% end -%>
+
+    <div>
+      <p class="custom-small-text"> En cliquant sur Connexion, vous acceptez les Conditions d’utilisation, la Politique de confidentialité, et la Politique relative aux cookies de Locall'it</p>
+    </div>
+    <div class="actions">
+      <%= f.submit "Connexion", class: "btn btn-lg btn-primary btn-block"  %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

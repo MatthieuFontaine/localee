@@ -27,20 +27,17 @@ border-width: 0px;*/
 
 }
 
-#custom_second_navbar {
+.custom-second-navbar-class {
   margin-top: -30px;
   border-width: 0px;
   background-color: bg-white;
 }
 
-#custom-first-navbar {
+.custom-first-navbar-class {
   margin: 0px;
     border-width: 0px;
 }
 
-#custom-container-fluid {
-  padding: 0px;
-}
 
 .custom-field-form-for-discount {
   display: none
@@ -50,4 +47,9 @@ border-width: 0px;*/
   border-top: 1px solid gray;
   margin-top: 30px;
   padding-top: 30px;
+}
+
+.custom-small-text {
+  font-size: 12px;
+  color: gray;
 }

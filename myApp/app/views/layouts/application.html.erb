@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>MyApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,20 +12,34 @@
   </head>
 
   <body>
-
-      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" id="custom-first-navbar">
+    <div id="custom-first-navbar">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm custom-first-navbar-class">
         <%= link_to image_tag('screen3.png'), root_path, class:"my-0 mr-md-auto"%>
-        <nav class="my-2 my-md-0 mr-md-3">
+        <nav class="my-2 my-md-0 mr-md-3" id="test-id">
           <%= link_to "Ajoutez une réduction", new_discount_path, class: "p-2 text-dark" %>
           <a class="p-2 text-dark" href="#">Enterprise</a>
           <a class="p-2 text-dark" href="#">Les partenaires</a>
           <a class="p-2 text-dark" href="#">A propos</a>
         </nav>
-        <a class="btn btn-outline-primary" href="#">S'incrire | Mon compte </a>
-      </div>
+        <% if current_company %>
+          <a class="dropdown-toggle btn btn-outline-primary" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "user"%>  Mon compte
+          </a>
+          <div class="dropdown-menu" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Se déconnecter", destroy_company_session_path, class: "dropdown-item", method: :delete %>
+          </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="custom_second_navbar">
-          <a class="navbar-brand" href="#">Navbar</a>
+        <% else %>
+          <%= link_to "S'incrire | Se connecter", new_company_session_path, class: "btn btn-outline-primary", method: :get %>
+        <% end %>
+      </div>
+    </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light custom-second-navbar-class" id="custom-second-navbar">
+          <a class="navbar-brand" href="#" >Navbar </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
