@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :companies
   resources :discounts 
   get '/about' => 'pages#about'
   root 'pages#home'
