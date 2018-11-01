@@ -9,7 +9,7 @@ class DiscountsController < ApplicationController
       flash[:success] = "Votre réduction a été ajoutée."
       redirect_to new_discount_path
     else
-      flash[:error] = "Une erreur est survenue. Veuillez Réessayer."
+      flash[:danger] ="Une erreur est survenue, Veuillez Réessayer. Assurez-vous d'avoir complété tous les champs du formulaire."
       redirect_to new_discount_path
     end
   end
