@@ -21,13 +21,13 @@
           <a class="p-2 text-dark" href="#">Les partenaires</a>
           <a class="p-2 text-dark" href="#">A propos</a>
         </nav>
-        <% if current_company %>
+        <% if company_signed_in? %>
           <a class="dropdown-toggle btn btn-outline-primary" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= fa_icon "user"%>  Mon compte
           </a>
           <div class="dropdown-menu" aria-labelledby="userDropdown">
             <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <%= link_to "Editer mon profil", edit_company_registration_path, class: "dropdown-item", method: :get%>
             <div class="dropdown-divider"></div>
             <%= link_to "Se déconnecter", destroy_company_session_path, class: "dropdown-item", method: :delete %>
           </div>
